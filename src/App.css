@@ -1,5 +1,23 @@
 .App {
   text-align: center;
+  float: left;
+  width: 100vw;
+}
+
+.all-messages {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid black;
+  float: left;
+}
+
+.read-message {
+  /*float: left;*/
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid black;
 }
 
 .App-logo {
