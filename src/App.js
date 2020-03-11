@@ -9,7 +9,8 @@ class App extends React.Component
         super (props);
         this.state = {
             posts: [],
-            readedPosts: []
+            readedPosts: [],
+            showPost: 10
         }
     }
 
@@ -19,7 +20,7 @@ class App extends React.Component
             .then(response => response.json())
             .then(result => {
                 this.setState({posts: result});
-                console.log(this.state);
+                // console.log(this.state);
             })
     }
 
@@ -27,14 +28,24 @@ class App extends React.Component
         // const newReadedPost = [...this.state.readedPosts, isReaded];
         // console.log(newReadedPost);
         this.setState({readedPosts: isReaded});
-    }
+    };
+
+    showMore = () => {
+        const newShowPost = this.state.showPost + 10;
+        this.setState({showPost: newShowPost});
+        console.log(this.state.showPost);
+    };
 
     render () {
-        const {posts, readedPosts} = this.state;
+        const {posts, readedPosts, showPost} = this.state;
         return (
             <div className="App">
                 <div className="all-messages">
-                    { posts.map(el => {return <Messages key={el.id} post={el} readMessage={this.readMessage}/>}) }
+                    { posts.map((el, i) => {
+                        if (i < showPost) {
+                            return <Messages key={el.id} post={el} readMessage={this.readMessage}/>
+                        } else return null}) }
+                        { (showPost < posts.length) ? <button onClick={this.showMore} style={{height: 100, width: 200}}>Show more</button> : null}
                 </div>
                 <div className="read-message">
                     {/*{ readedPosts.map(el => {return <ReadMessage post={el}/>}) }*/}
