@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ReadMessage({post}) {
+
     return (
         <div id="read-message"
              style={{backgroundColor: "green", borderWidth: 1, borderStyle: "solid", borderColor: "black"}} key={post.id}>

@@ -24,10 +24,10 @@ class App extends React.Component
             })
     }
 
-    readMessage = (isReaded) => {
+    readMessage = (readedMessage) => {
         // const newReadedPost = [...this.state.readedPosts, isReaded];
         // console.log(newReadedPost);
-        this.setState({readedPosts: isReaded});
+        this.setState({readedPosts: readedMessage});
     };
 
     showMore = () => {
